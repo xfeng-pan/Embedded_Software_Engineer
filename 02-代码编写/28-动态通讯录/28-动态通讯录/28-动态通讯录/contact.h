@@ -67,3 +67,6 @@ void SearchContact(const struct Contact* ps);
 //修改指定人的信息
 void ModifyContact(struct Contact* ps);
 
+//释放动态开辟的内存
+void DestroyContact(struct Contact* ps);
+

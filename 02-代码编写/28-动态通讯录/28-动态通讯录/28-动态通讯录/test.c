@@ -52,6 +52,7 @@ int main()
 		case SORT:
 			break;
 		case EXIT:
+			DestroyContact(&con);
 			printf("推出通讯录");
 			break;
 		default:

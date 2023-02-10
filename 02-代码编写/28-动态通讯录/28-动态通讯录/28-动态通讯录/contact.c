@@ -1,17 +1,17 @@
-#define _CRT_SECURE_NO_WARNINGS 1
+ï»¿#define _CRT_SECURE_NO_WARNINGS 1
 
 #include "contact.h"
 
 
-//³õÊ¼»¯Í¨Ñ¶Â¼
+//åˆå§‹åŒ–é€šè®¯å½•
 void InitContact(struct Contact* ps)
 {
 	ps->data = NULL;
-	//ps->data=(struct PeoInfo*) malloc(3 * sizeof(struct PeoInfo));//ÕâÑù¿ª±ÙµÄ¿Õ¼äÀïÃæÊÇËæ»úÖµ
-	ps->data=(struct PeoInfo*) calloc(DEFAULT_SZ, sizeof(struct PeoInfo));//¿ª±Ù¿Õ¼äµÄÍ¬Ê±£¬ÇåÁã
+	//ps->data=(struct PeoInfo*) malloc(3 * sizeof(struct PeoInfo));//è¿™æ ·å¼€è¾Ÿçš„ç©ºé—´é‡Œé¢æ˜¯éšæœºå€¼
+	ps->data=(struct PeoInfo*) calloc(DEFAULT_SZ, sizeof(struct PeoInfo));//å¼€è¾Ÿç©ºé—´çš„åŒæ—¶ï¼Œæ¸…é›¶
 	if (ps->data == NULL)
 	{
-		printf("Í¨Ñ¶Â¼ÄÚ´æ¿ª±ÙÊ§°Ü\n");
+		printf("é€šè®¯å½•å†…å­˜å¼€è¾Ÿå¤±è´¥\n");
 		printf("%s\n", strerror(errno));
 		return;
 	}
@@ -20,7 +20,7 @@ void InitContact(struct Contact* ps)
 
 }
 
-//¼ì²âÈİÁ¿
+//æ£€æµ‹å®¹é‡
 void CheckCapacity(struct Contact* ps)
 {
 	if (ps->size == ps->capacity)
@@ -30,77 +30,77 @@ void CheckCapacity(struct Contact* ps)
 		{
 			ps->data = ptr;
 			ps->capacity += 2;
-			printf("À©Èİ³É¹¦\n");
+			printf("æ‰©å®¹æˆåŠŸ\n");
 		}
 		else
 		{
-			printf("À©ÈİÊ§°Ü\n");
+			printf("æ‰©å®¹å¤±è´¥\n");
 		}
 	}
 }
 
-//Ôö¼ÓÒ»¸öÔªËØµ½Í¨Ñ¶Â¼ÖĞ
+//å¢åŠ ä¸€ä¸ªå…ƒç´ åˆ°é€šè®¯å½•ä¸­
 void AddContact(struct Contact* ps)
 {
-	//Ê×ÏÈÅĞ¶ÏÍ¨Ñ¶Â¼ÊÇ²»ÊÇÂúÁË
-	//1.Èç¹ûÂúÁË£¬¾ÍÀ©Èİ
-	//2.Èç¹û²»Âú£¬¾ÍÊ²Ã´¶¼²»×ö
+	//é¦–å…ˆåˆ¤æ–­é€šè®¯å½•æ˜¯ä¸æ˜¯æ»¡äº†
+	//1.å¦‚æœæ»¡äº†ï¼Œå°±æ‰©å®¹
+	//2.å¦‚æœä¸æ»¡ï¼Œå°±ä»€ä¹ˆéƒ½ä¸åš
 	CheckCapacity(ps);
 
-	//Ôö¼ÓÊı¾İ
-		printf("ÇëÊäÈëÃû×Ö->");
+	//å¢åŠ æ•°æ®
+		printf("è¯·è¾“å…¥åå­—->");
 		scanf("%s", ps->data[ps->size].name);
-		printf("ÇëÊäÈëÄêÁä->");
+		printf("è¯·è¾“å…¥å¹´é¾„->");
 		scanf("%d", &(ps->data[ps->size].age));
-		printf("ÇëÊäÈëĞÔ±ğ->");
+		printf("è¯·è¾“å…¥æ€§åˆ«->");
 		scanf("%s", ps->data[ps->size].sex);
-		printf("ÇëÊäÈëµç»°->");
+		printf("è¯·è¾“å…¥ç”µè¯->");
 		scanf("%s", ps->data[ps->size].tele);
-		printf("ÇëÊäÈëµØÖ·->");
+		printf("è¯·è¾“å…¥åœ°å€->");
 		scanf("%s", ps->data[ps->size].addres);
 
 		ps->size++;
-		printf("Ìí¼Ó³É¹¦\n");
+		printf("æ·»åŠ æˆåŠŸ\n");
 
 
 	// 
-	////Ê×ÏÈÅĞ¶ÏÍ¨Ñ¶Â¼ÊÇ²»ÊÇÂúÁË
+	////é¦–å…ˆåˆ¤æ–­é€šè®¯å½•æ˜¯ä¸æ˜¯æ»¡äº†
 	//if (ps->size == MAX)
 	//{
-	//	printf("Í¨Ñ¶Â¼ÒÑÂú£¬ÎŞ·¨Ôö¼Ó\n");
+	//	printf("é€šè®¯å½•å·²æ»¡ï¼Œæ— æ³•å¢åŠ \n");
 	//}
 	//else
 	//{
-	//	printf("ÇëÊäÈëÃû×Ö->");
+	//	printf("è¯·è¾“å…¥åå­—->");
 	//	scanf("%s", ps->data[ps->size].name);
-	//	printf("ÇëÊäÈëÄêÁä->");
+	//	printf("è¯·è¾“å…¥å¹´é¾„->");
 	//	scanf("%d", &(ps->data[ps->size].age));
-	//	printf("ÇëÊäÈëĞÔ±ğ->");
+	//	printf("è¯·è¾“å…¥æ€§åˆ«->");
 	//	scanf("%s", ps->data[ps->size].sex);
-	//	printf("ÇëÊäÈëµç»°->");
+	//	printf("è¯·è¾“å…¥ç”µè¯->");
 	//	scanf("%s", ps->data[ps->size].tele);
-	//	printf("ÇëÊäÈëµØÖ·->");
+	//	printf("è¯·è¾“å…¥åœ°å€->");
 	//	scanf("%s", ps->data[ps->size].addres);
 
 	//	ps->size++;
-	//	printf("Ìí¼Ó³É¹¦\n");
+	//	printf("æ·»åŠ æˆåŠŸ\n");
 
 	//}
 }
 
-//ÏÔÊ¾Í¨Ñ¶Â¼
+//æ˜¾ç¤ºé€šè®¯å½•
 void ShowContact(const struct Contact* ps)
 {
 	if (ps->size == 0)
 	{
-		printf("Í¨Ñ¶Â¼Îª¿Õ\n");
+		printf("é€šè®¯å½•ä¸ºç©º\n");
 	}
 	else
 	{
 		int i = 0;
-		//±êÌâ
-		printf("%-20s\t%-4s\t%-5s\t%-12s\t%-20s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
-		//Êı¾İ
+		//æ ‡é¢˜
+		printf("%-20s\t%-4s\t%-5s\t%-12s\t%-20s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
+		//æ•°æ®
 		for (i = 0; i < ps->size; i++)
 		{
 			printf("%-20s\t%-4d\t%-5s\t%-12s\t%-20s\n",
@@ -114,10 +114,10 @@ void ShowContact(const struct Contact* ps)
 	}
 }
 
-//ĞŞÊÎÕâ¸öº¯Êı
-//ÆÕÍ¨º¯Êı¾ßÓĞÍâ²¿Á´½ÓÊôĞÔ£¬±»staticĞŞÊÎºó£¬±ä³ÉÁËÄÚ²¿Á´½ÓÊôĞÔ
-//ÕÒµÃµ½·µ»ØÎ»ÖÃ
-//ÕÒ²»µ½·µ»Ø-1
+//ä¿®é¥°è¿™ä¸ªå‡½æ•°
+//æ™®é€šå‡½æ•°å…·æœ‰å¤–éƒ¨é“¾æ¥å±æ€§ï¼Œè¢«staticä¿®é¥°åï¼Œå˜æˆäº†å†…éƒ¨é“¾æ¥å±æ€§
+//æ‰¾å¾—åˆ°è¿”å›ä½ç½®
+//æ‰¾ä¸åˆ°è¿”å›-1
 static int FindByName(const struct Contact* ps, char name[MAX_NAME])
 {
 	int i = 0;
@@ -132,21 +132,21 @@ static int FindByName(const struct Contact* ps, char name[MAX_NAME])
 }
 
 
-//É¾³ıÍ¨Ñ¶Â¼ÖĞµÄÖ¸¶¨ÁªÏµÈË
+//åˆ é™¤é€šè®¯å½•ä¸­çš„æŒ‡å®šè”ç³»äºº
 void DelContact(struct Contact* ps)
 {
 	char name[MAX_NAME];
-	printf("ÇëÊäÈëÒªÉ¾³ıµÄÈËµÄÃû×Ö");
+	printf("è¯·è¾“å…¥è¦åˆ é™¤çš„äººçš„åå­—");
 	scanf("%s", name);
 
-	//1. ²éÕÒÒªÉ¾³ıµÄÈËÔÚÊ²Ã´Î»ÖÃ
+	//1. æŸ¥æ‰¾è¦åˆ é™¤çš„äººåœ¨ä»€ä¹ˆä½ç½®
 	int pos = FindByName(ps, name);
 
 
-	//2. É¾³ı
+	//2. åˆ é™¤
 	if (pos == ps->size)
 	{
-		printf("²éÎŞ´ËÈË\n");
+		printf("æŸ¥æ— æ­¤äºº\n");
 	}
 	else
 	{
@@ -155,27 +155,27 @@ void DelContact(struct Contact* ps)
 		{
 			ps->data[j] = ps->data[j + 1];
 		}
-		ps->size--;//¼õĞ¡Í¨Ñ¶Â¼µÄ´óĞ¡
-		printf("ÒÑ³É¹¦É¾³ı³ÉÔ±£º%s\n", name);
+		ps->size--;//å‡å°é€šè®¯å½•çš„å¤§å°
+		printf("å·²æˆåŠŸåˆ é™¤æˆå‘˜ï¼š%s\n", name);
 	}
 }
 
 
 
-//²éÕÒÖ¸¶¨ÈËµÄĞÅÏ¢
+//æŸ¥æ‰¾æŒ‡å®šäººçš„ä¿¡æ¯
 void SearchContact(const struct Contact* ps)
 {
 	char name[MAX_NAME];
-	printf("ÇëÊäÈëÒª²éÕÒµÄÈËµÄÃû×Ö");
+	printf("è¯·è¾“å…¥è¦æŸ¥æ‰¾çš„äººçš„åå­—");
 	scanf("%s", name);
 	int pos = FindByName(ps, name);
 	if (pos == -1)
 	{
-		printf("²éÎŞ´ËÈË\n");
+		printf("æŸ¥æ— æ­¤äºº\n");
 	}
 	else
 	{
-		printf("%-20s\t%-4s\t%-5s\t%-12s\t%-20s\n", "Ãû×Ö", "ÄêÁä", "ĞÔ±ğ", "µç»°", "µØÖ·");
+		printf("%-20s\t%-4s\t%-5s\t%-12s\t%-20s\n", "åå­—", "å¹´é¾„", "æ€§åˆ«", "ç”µè¯", "åœ°å€");
 		printf("%-20s\t%-4d\t%-5s\t%-12s\t%-20s\n",
 			ps->data[pos].name,
 			ps->data[pos].age,
@@ -185,35 +185,42 @@ void SearchContact(const struct Contact* ps)
 	}
 }
 
-//ĞŞ¸ÄÖ¸¶¨ÈËµÄĞÅÏ¢
+//ä¿®æ”¹æŒ‡å®šäººçš„ä¿¡æ¯
 void ModifyContact(struct Contact* ps)
 {
 	char name[MAX_NAME];
-	printf("ÇëÊäÈëÒªĞŞ¸ÄµÄÈËµÄÃû×Ö");
+	printf("è¯·è¾“å…¥è¦ä¿®æ”¹çš„äººçš„åå­—");
 	scanf("%s", name);
-	//1.²éÕÒ
+	//1.æŸ¥æ‰¾
 	int pos = FindByName(ps, name);
 	if (pos == -1)
 	{
-		printf("²éÎŞ´ËÈË\n");
+		printf("æŸ¥æ— æ­¤äºº\n");
 	}
-	//2.ĞŞ¸Ä
+	//2.ä¿®æ”¹
 	else
 	{
-		printf("ÇëÊäÈëÃû×Ö->");
+		printf("è¯·è¾“å…¥åå­—->");
 		scanf("%s", ps->data[pos].name);
-		printf("ÇëÊäÈëÄêÁä->");
+		printf("è¯·è¾“å…¥å¹´é¾„->");
 		scanf("%d", &(ps->data[pos].age));
-		printf("ÇëÊäÈëĞÔ±ğ->");
+		printf("è¯·è¾“å…¥æ€§åˆ«->");
 		scanf("%s", ps->data[pos].sex);
-		printf("ÇëÊäÈëµç»°->");
+		printf("è¯·è¾“å…¥ç”µè¯->");
 		scanf("%s", ps->data[pos].tele);
-		printf("ÇëÊäÈëµØÖ·->");
+		printf("è¯·è¾“å…¥åœ°å€->");
 		scanf("%s", ps->data[pos].addres);
 
-		printf("ĞŞ¸Ä³ÉÔ±£º%s\n", ps->data[pos].name);
+		printf("ä¿®æ”¹æˆå‘˜ï¼š%s\n", ps->data[pos].name);
 	}
 	
+}
+
+//é‡Šæ”¾åŠ¨æ€å¼€è¾Ÿçš„å†…å­˜
+void DestroyContact(struct Contact* ps)
+{
+	free(ps->data);
+	ps->data = NULL;
 }
 
 
