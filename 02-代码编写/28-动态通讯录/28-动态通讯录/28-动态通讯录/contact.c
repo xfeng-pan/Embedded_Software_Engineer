@@ -6,20 +6,48 @@
 //初始化通讯录
 void InitContact(struct Contact* ps)
 {
-	memset(ps->data, 0, sizeof(ps->data));
-	ps->size = 0;//将通讯录初始化为0；
+	ps->data = NULL;
+	//ps->data=(struct PeoInfo*) malloc(3 * sizeof(struct PeoInfo));//这样开辟的空间里面是随机值
+	ps->data=(struct PeoInfo*) calloc(DEFAULT_SZ, sizeof(struct PeoInfo));//开辟空间的同时，清零
+	if (ps->data == NULL)
+	{
+		printf("通讯录内存开辟失败\n");
+		printf("%s\n", strerror(errno));
+		return;
+	}
+	ps->size = 0;
+	ps->capacity = DEFAULT_SZ;
+
+}
+
+//检测容量
+void CheckCapacity(struct Contact* ps)
+{
+	if (ps->size == ps->capacity)
+	{
+		struct PeoInfo* ptr= realloc(ps->data,(ps->capacity + 2) * sizeof(struct PeoInfo));
+		if (ptr != NULL)
+		{
+			ps->data = ptr;
+			ps->capacity += 2;
+			printf("扩容成功\n");
+		}
+		else
+		{
+			printf("扩容失败\n");
+		}
+	}
 }
 
 //增加一个元素到通讯录中
 void AddContact(struct Contact* ps)
 {
 	//首先判断通讯录是不是满了
-	if (ps->size == MAX)
-	{
-		printf("通讯录已满，无法增加\n");
-	}
-	else
-	{
+	//1.如果满了，就扩容
+	//2.如果不满，就什么都不做
+	CheckCapacity(ps);
+
+	//增加数据
 		printf("请输入名字->");
 		scanf("%s", ps->data[ps->size].name);
 		printf("请输入年龄->");
@@ -34,7 +62,30 @@ void AddContact(struct Contact* ps)
 		ps->size++;
 		printf("添加成功\n");
 
-	}
+
+	// 
+	////首先判断通讯录是不是满了
+	//if (ps->size == MAX)
+	//{
+	//	printf("通讯录已满，无法增加\n");
+	//}
+	//else
+	//{
+	//	printf("请输入名字->");
+	//	scanf("%s", ps->data[ps->size].name);
+	//	printf("请输入年龄->");
+	//	scanf("%d", &(ps->data[ps->size].age));
+	//	printf("请输入性别->");
+	//	scanf("%s", ps->data[ps->size].sex);
+	//	printf("请输入电话->");
+	//	scanf("%s", ps->data[ps->size].tele);
+	//	printf("请输入地址->");
+	//	scanf("%s", ps->data[ps->size].addres);
+
+	//	ps->size++;
+	//	printf("添加成功\n");
+
+	//}
 }
 
 //显示通讯录

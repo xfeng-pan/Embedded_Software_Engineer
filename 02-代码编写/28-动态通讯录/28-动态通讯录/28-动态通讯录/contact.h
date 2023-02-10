@@ -1,13 +1,18 @@
 #pragma once
 
-#define MAX 1000
+//#define MAX 1000
+
 #define MAX_NAME 20
 #define MAX_SEX 5
 #define MAX_TELE 12
 #define MAX_ADDR 30
+#define DEFAULT_SZ 3
 
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <errno.h>
+#include <malloc.h>
 
 
 enum Option
@@ -23,21 +28,22 @@ enum Option
 
 
 //联系人信息结构体
-struct PeoInfo
+typedef struct PeoInfo
 {
 	char name[MAX_NAME];
 	int age;
 	char sex[MAX_NAME];
 	char tele[MAX_TELE];
 	char addres[MAX_ADDR];
-};
+}PeoInfo;
 
 //通讯录类型
-struct Contact
+typedef struct Contact
 {
-	struct PeoInfo data[MAX];//定义当前通讯录最多能存多少人的信息
+	struct PeoInfo *data;//定义一个指向PeopInfo类型结构体的指针
 	int size;//记录当前已经有多少人的信息
-};
+	int capacity;//记录当前通讯录的容量
+}Contact;
 
 
 

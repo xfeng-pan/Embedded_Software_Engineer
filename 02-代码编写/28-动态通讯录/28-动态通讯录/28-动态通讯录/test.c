@@ -19,8 +19,7 @@ int main()
 
 	//创建通讯录
 	//con就是通讯录
-	//里面能存储一千个人的信息
-	//并且能记录里面已经存了多少人
+	//包含*data，size，capacity
 	struct Contact con;
 
 	//初始化通讯录
