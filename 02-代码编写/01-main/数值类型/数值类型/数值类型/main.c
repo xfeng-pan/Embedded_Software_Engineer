@@ -4,7 +4,7 @@ int main()
 {
 	short age = 20;
 	float weight = 95.6;
-	//sizeof返回的是64位的无符号整型，因此占位符是%lld
+	//sizeof杩斿洖鐨勬槸64浣嶇殑鏃犵鍙锋暣鍨嬶紝鍥犳鍗犱綅绗︽槸%lld
 	printf("char:%lld\n", sizeof(char)); //1
 	printf("short:%lld\n", sizeof(short)); //2
 	printf("int:%lld\n", sizeof(int)); //4

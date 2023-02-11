@@ -9,6 +9,7 @@ again:
 	goto again;
 }
 
+
 //#include <stdio.h>
 //#include <time.h>
 //#include <stdlib.h>
@@ -21,15 +22,15 @@ again:
 //	
 //	while(1)
 //	{
-//		printf("ÇëÊäÈëÄú²ÂµÄÊı×Ö£º>");
+//		printf("è¯·è¾“å…¥æ‚¨çŒœçš„æ•°å­—ï¼š>");
 //		scanf("%d", &ret);
 //		if (ret < randnum)
-//			printf("²ÂĞ¡ÁË\n");
+//			printf("çŒœå°äº†\n");
 //		else if (ret > randnum)
-//			printf("²Â´óÁË\n");
+//			printf("çŒœå¤§äº†\n");
 //		else
 //		{
-//			printf("²Â²âÕıÈ·!!!\n");
+//			printf("çŒœæµ‹æ­£ç¡®!!!\n");
 //			break;
 //		}
 //	}
@@ -38,9 +39,9 @@ again:
 //int main()
 //{
 //	int input = 0;
-//	//ÄÃÊ±¼ä´ÁÀ´ÉèÖÃËæ»úÊıÖÖ×Ó
-//	//time_t time(time_t *timer); »ñÈ¡ÏµÍ³Ê±¼ä£¬ĞèÒªµ÷ÓÃ¿âº¯Êıtime.h
-//	//void srand(unsigned int seeed);ĞèÒªµ÷ÓÃ¿âº¯Êıstdlib.h
+//	//æ‹¿æ—¶é—´æˆ³æ¥è®¾ç½®éšæœºæ•°ç§å­
+//	//time_t time(time_t *timer); è·å–ç³»ç»Ÿæ—¶é—´ï¼Œéœ€è¦è°ƒç”¨åº“å‡½æ•°time.h
+//	//void srand(unsigned int seeed);éœ€è¦è°ƒç”¨åº“å‡½æ•°stdlib.h
 //	srand ((unsigned int) time(NULL));
 //
 //	do
@@ -54,9 +55,9 @@ again:
 //		else if (0 == input)
 //			break;
 //		else
-//			printf("ÊäÈë´íÎó£¡\n");
+//			printf("è¾“å…¥é”™è¯¯ï¼\n");
 //	} while (input);
-//	printf("ÍË³öÓÎÏ·£¡\n");
+//	printf("é€€å‡ºæ¸¸æˆï¼\n");
 //	return 0;
 //}
 
@@ -72,18 +73,18 @@ again:
 //	char password[20] = { 0 };
 //	for (i = 0; i < 3; i++)
 //	{
-//		printf("ÇëÊäÈëÃÜÂë£º>");
+//		printf("è¯·è¾“å…¥å¯†ç ï¼š>");
 //		scanf("%s", password);
 //		if (strcmp(password, "123456") == 0)
 //		{
-//			printf("µÇÂ½³É¹¦\n");
+//			printf("ç™»é™†æˆåŠŸ\n");
 //			break;
 //		}
 //		else
-//			printf("ÃÜÂë´íÎó\n");
+//			printf("å¯†ç é”™è¯¯\n");
 //	}
 //	if (i == 3)
-//		printf("Èı´ÎÃÜÂë¾ù´íÎó£¡£¡£¡\n");
+//		printf("ä¸‰æ¬¡å¯†ç å‡é”™è¯¯ï¼ï¼ï¼\n");
 //	return 0;
 //}
 
@@ -95,7 +96,7 @@ again:
 //{
 //	char arr[] = "Welcome to here!!!" ;
 //	//int index = sizeof(arr) / sizeof(arr[0])-2;
-//	int index = strlen(arr) - 1;//ÓÃÕâ¸öÀ´¼ÆËã×Ö·û´®³¤¶È´Ó¶øµÃ³öÊı×éµÄ´óĞ¡
+//	int index = strlen(arr) - 1;//ç”¨è¿™ä¸ªæ¥è®¡ç®—å­—ç¬¦ä¸²é•¿åº¦ä»è€Œå¾—å‡ºæ•°ç»„çš„å¤§å°
 //	char arr2[19] = { '\0' };
 //
 //	for (int i = 0; i < index; i++)
@@ -127,9 +128,9 @@ again:
 
 //int binserach(int x, int arr[],int sz1)
 //{
-//	int left = 0;//Êı×éÏÂ±ê£¬×óÖµ
-//	int right = sz1;//Êı×éÏÂ±ê£¬ÓÒÖµ
-//	int mid = (left + right) / 2; //Êı×éÏÂ±ê£¬ÖĞÖµ
+//	int left = 0;//æ•°ç»„ä¸‹æ ‡ï¼Œå·¦å€¼
+//	int right = sz1;//æ•°ç»„ä¸‹æ ‡ï¼Œå³å€¼
+//	int mid = (left + right) / 2; //æ•°ç»„ä¸‹æ ‡ï¼Œä¸­å€¼
 //
 //	while (x!=arr[mid])
 //	{
@@ -152,14 +153,14 @@ again:
 //
 //int main()
 //{
-//	int arrs[] = { 1,2,3,4,5,6,7,8,9,10 };//´ı²éÕÒµÄÊı×é
-//	int n;//´ı²éÕÒµÄÊı£¬´ıÓÃ»§ÊäÈë£»
-//	int ret;//·µ»ØµÄ½á¹ûÏÂ±ê
-//	int sz = sizeof(arrs) / sizeof(arrs[0]);//¼ÆËãÊı×éµÄ´óĞ¡
-//	printf("ÇëÊäÈë´ø²éÕÒµÄÊıÖµ£º");
+//	int arrs[] = { 1,2,3,4,5,6,7,8,9,10 };//å¾…æŸ¥æ‰¾çš„æ•°ç»„
+//	int n;//å¾…æŸ¥æ‰¾çš„æ•°ï¼Œå¾…ç”¨æˆ·è¾“å…¥ï¼›
+//	int ret;//è¿”å›çš„ç»“æœä¸‹æ ‡
+//	int sz = sizeof(arrs) / sizeof(arrs[0]);//è®¡ç®—æ•°ç»„çš„å¤§å°
+//	printf("è¯·è¾“å…¥å¸¦æŸ¥æ‰¾çš„æ•°å€¼ï¼š");
 //	scanf("%d", &n);
 //	ret = binserach(n, arrs,sz);
-//	printf("%dÊÇÊı×éÖĞµÄµÚ%dÎ»Êı", n, ret + 1);
+//	printf("%dæ˜¯æ•°ç»„ä¸­çš„ç¬¬%dä½æ•°", n, ret + 1);
 //	return 0;
 //}
 
@@ -170,12 +171,12 @@ again:
 //	{
 //		if (arr[i-1] == x)
 //		{
-//			printf("%dÊÇÊı×éÖĞµÄµÚ%d¸öÔªËØ\n", x, i);
+//			printf("%dæ˜¯æ•°ç»„ä¸­çš„ç¬¬%dä¸ªå…ƒç´ \n", x, i);
 //			break;
 //		}
 //	}
 //	if (i > n)
-//		printf("ÕÒ²»µ½\n");
+//		printf("æ‰¾ä¸åˆ°\n");
 //}
 //
 //int main()
@@ -183,7 +184,7 @@ again:
 //	int n=20;
 //	int x = 0;
 //	int arr[20] = { 1,2,3,4,5,6,7,8,9,10,12,14,16,18,20,22,24,26,28,30 };
-//	printf("ÇëÊäÈëÒ»¸öÖµ£º");
+//	printf("è¯·è¾“å…¥ä¸€ä¸ªå€¼ï¼š");
 //	scanf("%d", &x);
 //	binserach(x, arr, n);
 //	return 0;
@@ -214,12 +215,12 @@ again:
 //	int n;
 //	long long result=1;
 //	int i = 0;
-//	printf("¼ÆËãnµÄ½×³Ë\n");
-//	printf("ÇëÊäÈën£º");
+//	printf("è®¡ç®—nçš„é˜¶ä¹˜\n");
+//	printf("è¯·è¾“å…¥nï¼š");
 //	scanf("%d", &n);
 //	for (i = 1; i <= n; i++)
 //		result *= i;
-//	printf("nµÄ½×³ËÊÇ%lld\n", result);
+//	printf("nçš„é˜¶ä¹˜æ˜¯%lld\n", result);
 //}
 
 //int main()
@@ -264,7 +265,7 @@ again:
 //	for (; i < 10; i++)
 //	{
 //		for (; j < 10; j++)
-//			printf("Ñ­»·´òÓ¡ing\n");
+//			printf("å¾ªç¯æ‰“å°ing\n");
 //	}
 //	return 0;
 //}
@@ -274,7 +275,7 @@ again:
 //{
 //	for (;;)
 //	{
-//		printf("ËÀÑ­»·\n");
+//		printf("æ­»å¾ªç¯\n");
 //	}
 //}
 
@@ -312,21 +313,21 @@ again:
 //{
 //	int ret = 0;
 //	char password[20] = { 0 };
-//	printf("ÇëÊäÈëÃÜÂë->:");
+//	printf("è¯·è¾“å…¥å¯†ç ->:");
 //	scanf("%s", password);
-//	//ÊäÈë»º³åÇø»¹Ê£Ò»¸ö'\n'£¬ÆäACSII±àÂëÎª10
-//	//Çå¿ÕÊäÈë»º³åÇø
+//	//è¾“å…¥ç¼“å†²åŒºè¿˜å‰©ä¸€ä¸ª'\n'ï¼Œå…¶ACSIIç¼–ç ä¸º10
+//	//æ¸…ç©ºè¾“å…¥ç¼“å†²åŒº
 //	while ((ret = getchar()) != '\n')
 //	{
-//		;//¿ÕÓï¾ä£¬²»×öÈÎºÎÊÂÇé
+//		;//ç©ºè¯­å¥ï¼Œä¸åšä»»ä½•äº‹æƒ…
 //	}
 //
-//	printf("ÇëÈ·ÈÏ(Y/N)->:");
+//	printf("è¯·ç¡®è®¤(Y/N)->:");
 //	ret = getchar();
 //	if (ret == 'Y')
-//		printf("È·ÈÏ³É¹¦£¡");
+//		printf("ç¡®è®¤æˆåŠŸï¼");
 //	else
-//		printf("·ÅÆúÊ§°Ü£¡");
+//		printf("æ”¾å¼ƒå¤±è´¥ï¼");
 //	return 0;
 //}
 
@@ -335,9 +336,9 @@ again:
 //int main()
 //{
 //	int ch = 0;
-//	//EOF : end of file ÎÄ¼ş½áÊø±êÖ¾
-//	//±¾ÖÊÊÇ-1
-//	//¼üÅÌÊäÈë£ºCtrl+Z
+//	//EOF : end of file æ–‡ä»¶ç»“æŸæ ‡å¿—
+//	//æœ¬è´¨æ˜¯-1
+//	//é”®ç›˜è¾“å…¥ï¼šCtrl+Z
 //
 //	while ((ch = getchar()) != EOF)
 //	{

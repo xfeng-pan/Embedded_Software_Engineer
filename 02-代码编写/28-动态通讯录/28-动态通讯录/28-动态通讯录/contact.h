@@ -1,5 +1,6 @@
 #pragma once
 
+
 //#define MAX 1000
 
 #define MAX_NAME 20
@@ -27,7 +28,7 @@ enum Option
 };
 
 
-//ÁªÏµÈËĞÅÏ¢½á¹¹Ìå
+//è”ç³»äººä¿¡æ¯ç»“æ„ä½“
 typedef struct PeoInfo
 {
 	char name[MAX_NAME];
@@ -37,36 +38,36 @@ typedef struct PeoInfo
 	char addres[MAX_ADDR];
 }PeoInfo;
 
-//Í¨Ñ¶Â¼ÀàĞÍ
+//é€šè®¯å½•ç±»å‹
 typedef struct Contact
 {
-	struct PeoInfo *data;//¶¨ÒåÒ»¸öÖ¸ÏòPeopInfoÀàĞÍ½á¹¹ÌåµÄÖ¸Õë
-	int size;//¼ÇÂ¼µ±Ç°ÒÑ¾­ÓĞ¶àÉÙÈËµÄĞÅÏ¢
-	int capacity;//¼ÇÂ¼µ±Ç°Í¨Ñ¶Â¼µÄÈİÁ¿
+	struct PeoInfo *data;//å®šä¹‰ä¸€ä¸ªæŒ‡å‘PeopInfoç±»å‹ç»“æ„ä½“çš„æŒ‡é’ˆ
+	int size;//è®°å½•å½“å‰å·²ç»æœ‰å¤šå°‘äººçš„ä¿¡æ¯
+	int capacity;//è®°å½•å½“å‰é€šè®¯å½•çš„å®¹é‡
 }Contact;
 
 
 
-//ÉùÃ÷º¯Êı
+//å£°æ˜å‡½æ•°
 // 
-//³õÊ¼»¯Í¨Ñ¶Â¼
+//åˆå§‹åŒ–é€šè®¯å½•
 void InitContact(struct Contact* ps);
 
-//Ôö¼ÓÒ»¸öÔªËØµ½Í¨Ñ¶Â¼ÖĞ
+//å¢åŠ ä¸€ä¸ªå…ƒç´ åˆ°é€šè®¯å½•ä¸­
 void AddContact(struct Contact* ps);
 
-//ÏÔÊ¾Í¨Ñ¶Â¼
+//æ˜¾ç¤ºé€šè®¯å½•
 void ShowContact(const struct Contact* ps);
 
-//É¾³ıÍ¨Ñ¶Â¼ÖĞµÄÖ¸¶¨ÁªÏµÈË
+//åˆ é™¤é€šè®¯å½•ä¸­çš„æŒ‡å®šè”ç³»äºº
 void DelContact(struct Contact* ps);
 
-//²éÕÒÖ¸¶¨ÈËµÄĞÅÏ¢
+//æŸ¥æ‰¾æŒ‡å®šäººçš„ä¿¡æ¯
 void SearchContact(const struct Contact* ps);
 
-//ĞŞ¸ÄÖ¸¶¨ÈËµÄĞÅÏ¢
+//ä¿®æ”¹æŒ‡å®šäººçš„ä¿¡æ¯
 void ModifyContact(struct Contact* ps);
 
-//ÊÍ·Å¶¯Ì¬¿ª±ÙµÄÄÚ´æ
+//é‡Šæ”¾åŠ¨æ€å¼€è¾Ÿçš„å†…å­˜
 void DestroyContact(struct Contact* ps);
 

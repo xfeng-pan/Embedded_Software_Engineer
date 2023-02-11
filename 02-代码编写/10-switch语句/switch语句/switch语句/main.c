@@ -13,14 +13,14 @@ int main()
 	case 3:
 	case 4:
 	case 5:
-		printf("½ñÌìÊÇĞÇÆÚ%d,ÊÇ¹¤×÷ÈÕ\n", day);
+		printf("ä»Šå¤©æ˜¯æ˜ŸæœŸ%d,æ˜¯å·¥ä½œæ—¥\n", day);
 		break;
 	case 6:
 	case 7:
-		printf("½ñÌìÊÇĞÇÆÚ%d,ÊÇĞİÏ¢ÈÕ\n", day);
+		printf("ä»Šå¤©æ˜¯æ˜ŸæœŸ%d,æ˜¯ä¼‘æ¯æ—¥\n", day);
 		break;
 	default:
-		printf("ÊäÈë´íÎó\n");
+		printf("è¾“å…¥é”™è¯¯\n");
 		break;
 	}
 	return 0;

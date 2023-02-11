@@ -12,10 +12,10 @@ int main()
 {
 	int a = 0, b = 0;
 	int sum = 0;
-	printf("请输入两个相加数：\n");
-	printf("请输入第一个数：\n");
+	printf("璇疯緭鍏ヤ袱涓浉鍔犳暟锛歕n");
+	printf("璇疯緭鍏ョ涓�涓暟锛歕n");
 	scanf("%d", &a);
-	printf("请输入第二个数：\n");
+	printf("璇疯緭鍏ョ浜屼釜鏁帮細\n");
 	scanf("%d", &b);
 	sum = add(a, b);
 	printf("%d + %d = %d\n", a, b, sum);

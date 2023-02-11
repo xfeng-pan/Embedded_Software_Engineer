@@ -4,6 +4,7 @@
 
 
 
+
 struct S
 {
 	char a : 3;

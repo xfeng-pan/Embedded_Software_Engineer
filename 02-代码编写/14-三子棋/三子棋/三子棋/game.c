@@ -18,35 +18,35 @@ void InitBoard(char board[Row][Col], int row, int col)
 void GameStart(char board[Row][Col], int row, int col)
 {
 	char ret = 'C';
-	//³õÊ¼»¯ÆåÅÌ
+	//åˆå§‹åŒ–æ£‹ç›˜
 	InitBoard(board, Row, Col);
-	//ÏÔÊ¾ÆåÅÌ
+	//æ˜¾ç¤ºæ£‹ç›˜
 	DisplayBoard(board,row,col);
 	while (1)
 	{
-		//Íæ¼ÒÏÂÆå
+		//çŽ©å®¶ä¸‹æ£‹
 		PlayerMove(board, row, col);
-		//µçÄÔÏÂÆå
+		//ç”µè„‘ä¸‹æ£‹
 		ComMove(board, row, col);
 		ret = IsWin(board, row, col);
 		if ('O' == ret)
 		{
-			printf("¹§Ï²Äú£¬È¡µÃÊ¤Àû£¡\n");
+			printf("æ­å–œæ‚¨ï¼Œå–å¾—èƒœåˆ©ï¼\n");
 			break;
 		}
 		if ('X' == ret)
 		{
-			printf("ºÜÒÅº¶£¬ÄúÊäÁË:(\n");
+			printf("å¾ˆé—æ†¾ï¼Œæ‚¨è¾“äº†:(\n");
 			break;
 		}
 		if ('Q' == ret)
 		{
-			printf("Æ½¾Ö£¡£¡£¡\n");
+			printf("å¹³å±€ï¼ï¼ï¼\n");
 			break;
 		}
 		if ('C' == ret)
 		{
-			printf("¼ÌÐøÓÎÏ·£º\n");
+			printf("ç»§ç»­æ¸¸æˆï¼š\n");
 		}
 		
 
@@ -90,7 +90,7 @@ void PlayerMove(char board[Row][Col], int row, int col)
 {
 	int x = 0, y = 0;
 	int IsLegal = 0;
-	printf("ÇëÊäÈëÄúÒªÏÂÆåµÄ×ø±ê,ÓÃ¿Õ¸ñ·Ö¿ª£º>\n");
+	printf("è¯·è¾“å…¥æ‚¨è¦ä¸‹æ£‹çš„åæ ‡,ç”¨ç©ºæ ¼åˆ†å¼€ï¼š>\n");
 	scanf("%d %d", &x, &y);
 	do
 	{
@@ -118,11 +118,12 @@ void ComMove(char board[Row][Col], int row, int col)
 		if (board[randrow][randcol] == ' ')
 		{
 			board[randrow][randcol] = 'X';
-			printf("µçÄÔÏÂÆå£º\n");
+			printf("ç”µè„‘ä¸‹æ£‹ï¼š\n");
 			DisplayBoard(board, row, col);
 			break;
 		}
 	}
+
 
 
 	;
@@ -131,7 +132,7 @@ void ComMove(char board[Row][Col], int row, int col)
 
 char IsWin(char board[Row][Col], int row, int col)
 {
-	//ÈýÐÐÏàµÈ
+	//ä¸‰è¡Œç›¸ç­‰
 	int ret = 0;
 	for (int i = 0; i < row; i++)
 	{

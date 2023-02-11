@@ -7,9 +7,10 @@
 
 char*  my_strcpy(char* dest, const char* src)
 {
+
 	char* ret = dest;
-	assert(dest != NULL);//¶ÏÑÔ
-	assert(src != NULL);//¶ÏÑÔ
+	assert(dest != NULL);//æ–­è¨€
+	assert(src != NULL);//æ–­è¨€
 	
 	while ((*dest) ? (*dest++ = *src++) : 0)
 	{
@@ -22,7 +23,7 @@ char*  my_strcpy(char* dest, const char* src)
 int main()
 {
 	//strcpy
-	//×Ö·û´®¿½±´
+	//å­—ç¬¦ä¸²æ‹·è´
 
 	char arr1[] = "####################";
 	char arr2[] = "hello world";

@@ -18,7 +18,7 @@ int main()
 	scanf("%d%d", &a, &b);
 	//b = a + b;
 	sum = a + b;
-	//printf("%d", b);	ÕâÑùÒ²ÊÇ¿ÉÓÃµÄ
+	//printf("%d", b);	è¿™æ ·ä¹Ÿæ˜¯å¯ç”¨çš„
 	printf("%d", sum);
 	return 0;
 

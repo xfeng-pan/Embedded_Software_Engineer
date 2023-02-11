@@ -11,27 +11,31 @@ struct Book
 
 int main()
 {
-	struct Book b1 = { "CÓïÑÔ³ÌÐòÉè¼Æ",12.99 };
-	struct Book* pb = &b1;//½á¹¹ÌåÖ¸Õë
+	struct Book b1 = { "Cè¯­è¨€ç¨‹åºè®¾è®¡",12.99 };
+	struct Book* pb = &b1;//ç»“æž„ä½“æŒ‡é’ˆ
 
-	strcpy(pb->name, "C++³ÌÐòÉè¼Æ");
-	printf("ÐÂÊéÃû£º%s\n", (*pb).name);
+	strcpy(pb->name, "C++ç¨‹åºè®¾è®¡");
+	printf("æ–°ä¹¦åï¼š%s\n", (*pb).name);
 	return 0;
+
 }
 	//printf("-------------------------\n");
-	//printf("ÀûÓÃ½á¹¹Ìå´òÓ¡ºÍÐÞ¸ÄÐÅÏ¢\n");
-	//printf("ÊéÃû£º%s\n", b1.name);
-	//printf("¼Û¸ñ£º%.2f\n", b1.price);
-	//printf("°ËÎåÕÛºóµÄ¼Û¸ñÎª£º%.2f\n", b1.price * 0.85);
+	//printf("åˆ©ç”¨ç»“æž„ä½“æ‰“å°å’Œä¿®æ”¹ä¿¡æ¯\n");
+	//printf("ä¹¦åï¼š%s\n", b1.name);
+	//printf("ä»·æ ¼ï¼š%.2f\n", b1.price);
+	//printf("å…«äº”æŠ˜åŽçš„ä»·æ ¼ä¸ºï¼š%.2f\n", b1.price * 0.85);
 	//printf("-------------------------\n");
-	//printf("ÀûÓÃÖ¸Õë´òÓ¡ºÍÐÞ¸ÄÐÅÏ¢\n");
-	//printf("ÊéÃû£º%s\n", (*pb).name);
-	//printf("¼Û¸ñ£º%.2f\n", (*pb).price);
-	//printf("°ËÎåÕÛºóµÄ¼Û¸ñÎª£º%.2f\n", (*pb).price * 0.85);
+	//printf("åˆ©ç”¨æŒ‡é’ˆæ‰“å°å’Œä¿®æ”¹ä¿¡æ¯\n");
+	//printf("ä¹¦åï¼š%s\n", (*pb).name);
+	//printf("ä»·æ ¼ï¼š%.2f\n", (*pb).price);
+	//printf("å…«äº”æŠ˜åŽçš„ä»·æ ¼ä¸ºï¼š%.2f\n", (*pb).price * 0.85);
 	//printf("-------------------------\n");
-	//printf("ÀûÓÃÖ¸Õë->´òÓ¡ºÍÐÞ¸ÄÐÅÏ¢\n");
-	//printf("ÊéÃû£º%s\n", pb->name);
-	//printf("¼Û¸ñ£º%.2f\n", pb->price);
-	//printf("°ËÎåÕÛºóµÄ¼Û¸ñÎª£º%.2f\n", pb->price * 0.85);
+	//printf("åˆ©ç”¨æŒ‡é’ˆ->æ‰“å°å’Œä¿®æ”¹ä¿¡æ¯\n");
+	//printf("ä¹¦åï¼š%s\n", pb->name);
+	//printf("ä»·æ ¼ï¼š%.2f\n", pb->price);
+	//printf("å…«äº”æŠ˜åŽçš„ä»·æ ¼ä¸ºï¼š%.2f\n", pb->price * 0.85);
 //	return 0;
 //}
+
+
+

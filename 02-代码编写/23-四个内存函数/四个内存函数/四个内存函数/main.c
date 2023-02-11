@@ -26,7 +26,7 @@ int main()
 //	assert(dest && src);
 //	if (dest < src)
 //	{
-//		//从前到后
+//		//浠庡墠鍒板悗
 //		while (count--)
 //		{
 //			*(char*)dest = *(char*)src;
@@ -36,7 +36,7 @@ int main()
 //	}
 //	else
 //	{
-//		//从后到前
+//		//浠庡悗鍒板墠
 //		while (count--)
 //		{
 //			*((char*)dest + count) = *((char*)src + count);
@@ -57,6 +57,8 @@ int main()
 //	}
 //	return 0;
 //}
+
+
 
 
 //void* my_memcpy(void* dest, const void* src, int count)

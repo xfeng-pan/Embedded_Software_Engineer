@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
+
 #include "contact.h"
 
 void menu()
@@ -14,23 +15,23 @@ void menu()
 
 int main()
 {
-	int input = 0;//´Ó¼üÅÌÊäÈëµÄÖµ
+	int input = 0;//ä»Žé”®ç›˜è¾“å…¥çš„å€¼
 
 
-	//´´½¨Í¨Ñ¶Â¼
-	//con¾ÍÊÇÍ¨Ñ¶Â¼
-	//°üº¬*data£¬size£¬capacity
+	//åˆ›å»ºé€šè®¯å½•
+	//conå°±æ˜¯é€šè®¯å½•
+	//åŒ…å«*dataï¼Œsizeï¼Œcapacity
 	struct Contact con;
 
-	//³õÊ¼»¯Í¨Ñ¶Â¼
-	//×îºÃÄÜ´«Ö·
-	//´«Ö·²ÅÄÜ¸Ä±äÍ¨Ñ¶Â¼ÀïµÄÖµ
+	//åˆå§‹åŒ–é€šè®¯å½•
+	//æœ€å¥½èƒ½ä¼ å€
+	//ä¼ å€æ‰èƒ½æ”¹å˜é€šè®¯å½•é‡Œçš„å€¼
 	InitContact(&con);
 
 	do
 	{
 		menu();
-		printf("ÇëÑ¡Ôñ->:");
+		printf("è¯·é€‰æ‹©->:");
 		scanf("%d", &input);
 		switch (input)
 		{
@@ -53,10 +54,10 @@ int main()
 			break;
 		case EXIT:
 			DestroyContact(&con);
-			printf("ÍÆ³öÍ¨Ñ¶Â¼");
+			printf("æŽ¨å‡ºé€šè®¯å½•");
 			break;
 		default:
-			printf("Ñ¡Ôñ´íÎó");
+			printf("é€‰æ‹©é”™è¯¯");
 		}
 	} while (input);
 

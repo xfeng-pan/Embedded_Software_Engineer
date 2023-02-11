@@ -5,19 +5,20 @@
 int main()
 {
 	int input = 0;
-	//´´½¨ÆåÅÌ
+	//åˆ›å»ºæ£‹ç›˜
 	
 	printf("%p \n", &Board[0][0]);
 	
-	//ÉèÖÃËæ»úÊıÖÖ×Ó
+	//è®¾ç½®éšæœºæ•°ç§å­
 	srand((unsigned int)time(NULL));
-	//½øÈë²Ëµ¥Ñ¡Ôñ²¢½øĞĞÓÎÏ·
+	//è¿›å…¥èœå•é€‰æ‹©å¹¶è¿›è¡Œæ¸¸æˆ
 	do
 	{
+
 		printf("***************************************\n");
 		printf("*******  1.Play        0.Exit  ********\n");
 		printf("***************************************\n");
-		printf("ÇëÑ¡ÔñÊÇ·ñ½øĞĞÓÎÏ·£º\n");
+		printf("è¯·é€‰æ‹©æ˜¯å¦è¿›è¡Œæ¸¸æˆï¼š\n");
 		scanf("%d", &input);
 		switch (input)
 		{
@@ -25,14 +26,16 @@ int main()
 			GameStart(Board, Row, Col);
 			break;
 		case 0:
-			printf("ÍË³öÓÎÏ·\n");
+			printf("é€€å‡ºæ¸¸æˆ\n");
 			break;
 		default:
-			printf("ÊäÈë´íÎó£¡£¡£¡\n");
+			printf("è¾“å…¥é”™è¯¯ï¼ï¼ï¼\n");
 			break;
 		}
 
 	} while (input);
+
+
 
 
 

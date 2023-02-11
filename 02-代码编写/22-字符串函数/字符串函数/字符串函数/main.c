@@ -36,7 +36,7 @@ int main()
 //
 //	strcpy(buf, arr1);
 //
-//	//ÇĞ¸îbufÖĞµÄÊı¾İ
+//	//åˆ‡å‰²bufä¸­çš„æ•°æ®
 //	for (char* ret = strtok(buf, p); ret != NULL; ret = strtok(NULL, p))
 //	{
 //		printf("%s\n", ret);
@@ -53,7 +53,7 @@ int main()
 //
 //	strcpy(buf, arr1);
 //
-//	//ÇĞ¸îbufÖĞµÄÊı¾İ
+//	//åˆ‡å‰²bufä¸­çš„æ•°æ®
 //	char* ret=strtok(buf, p);
 //
 //	printf("%s\n", ret);
@@ -81,24 +81,24 @@ int main()
 //{
 //	char* s1 = (char *)str1;
 //	char* s2 = (char *)str2;
-//	char* cur = (char *)str1;//ÂÖÑ¯²éÕÒ
+//	char* cur = (char *)str1;//è½®è¯¢æŸ¥æ‰¾
 //
 //	if (!*str1)
-//		return s1;//Òª²éÕÒµÄ×Ö·û´®Îª¿Õ£¬Ôò·µ»Ø±»²éÕÒµÄ×Ö·û´®
+//		return s1;//è¦æŸ¥æ‰¾çš„å­—ç¬¦ä¸²ä¸ºç©ºï¼Œåˆ™è¿”å›è¢«æŸ¥æ‰¾çš„å­—ç¬¦ä¸²
 //
 //	while (*cur)
 //	{
 //		s1 = cur;
 //		s2 = (char*)str2;
-//		while (*s1 && *s2 && (*s1 == *s2))//¶ÔÓ¦×Ö·ûÏàÍ¬£¬ÇÒ²»Îª¿Õ
+//		while (*s1 && *s2 && (*s1 == *s2))//å¯¹åº”å­—ç¬¦ç›¸åŒï¼Œä¸”ä¸ä¸ºç©º
 //		{
 //			s1++;
 //			s2++;
 //		}
 //		if (!*s2)
-//			return cur;//ÒÑ¾­Íê³ÉÁË²éÕÒ
+//			return cur;//å·²ç»å®Œæˆäº†æŸ¥æ‰¾
 //		if (!*s1)
-//			return NULL;//s1ÒÑ¾­µ½Í·ÁË£¬ÌáÇ°½áÊø
+//			return NULL;//s1å·²ç»åˆ°å¤´äº†ï¼Œæå‰ç»“æŸ
 //		cur++;
 //	}
 //	return NULL;
@@ -113,7 +113,7 @@ int main()
 //
 //	char* ret = my_strstr(p1, p2);
 //
-//	if (ret == NULL) printf("Î´ÕÒµ½¸Ã×Ö·û´®\n");
+//	if (ret == NULL) printf("æœªæ‰¾åˆ°è¯¥å­—ç¬¦ä¸²\n");
 //	else printf("%s\n", ret);
 //
 //	return 0;
@@ -123,7 +123,7 @@ int main()
 
 
 ////int srtncmp(const char* str1,const char* str2,int count)
-////Ä£ÄâÊµÏÖ£º
+////æ¨¡æ‹Ÿå®ç°ï¼š
 //
 //int my_strncmp(const char* str1, const char* str2, int count)
 //{
@@ -143,7 +143,7 @@ int main()
 //
 //int main()
 //{
-//	//strncmp-×Ö·û´®±È½Ï
+//	//strncmp-å­—ç¬¦ä¸²æ¯”è¾ƒ
 //	const char* p1 = "abcdefg";
 //	const char* p2 = "aqwer";
 //
@@ -211,7 +211,7 @@ int main()
 //my_strcmp(const char* str1, const char* str2)
 //{
 //	assert(str1 && str2);
-//	//±È½Ï
+//	//æ¯”è¾ƒ
 //	while (*str1 == *str2)
 //	{
 //		if (*str1 == '\0') return 0;
@@ -245,12 +245,12 @@ int main()
 //{
 //	assert(dest && src);
 //	char* ret = dest;
-//	//1.Ñ°ÕÒdestµÄ½áÎ²£º
+//	//1.å¯»æ‰¾destçš„ç»“å°¾ï¼š
 //	while (*dest!='\0')
 //	{
 //		dest++;
 //	}
-//	//2.×·¼Ó
+//	//2.è¿½åŠ 
 //	while (*dest++ = *src++)
 //	{
 //		;
@@ -273,9 +273,9 @@ int main()
 //char* my_strcpy(char* dest, const char* src)
 //{
 //	char* ret = dest;
-//	assert(dest != NULL);//¶ÏÑÔ
-//	assert(src != NULL);//¶ÏÑÔ
-//	//×Ö·û´®¿½±´
+//	assert(dest != NULL);//æ–­è¨€
+//	assert(src != NULL);//æ–­è¨€
+//	//å­—ç¬¦ä¸²æ‹·è´
 //	while (*dest++ = *src++)
 //	{
 //		;
@@ -287,7 +287,7 @@ int main()
 //int main()
 //{
 //	//strcpy
-//	//×Ö·û´®¿½±´
+//	//å­—ç¬¦ä¸²æ‹·è´
 //
 //	char arr1[] = "####################";
 //	char arr2[] = "hello world";
@@ -337,7 +337,7 @@ int main()
 //}
 
 
-//¼ÆÊıÆ÷
+//è®¡æ•°å™¨
 //int my_strlen(const char* str)//size_t
 //{
 //	int count = 0;
@@ -352,7 +352,7 @@ int main()
 //}
 
 
-//µİ¹é
+//é€’å½’
 
 //int my_strlen(const char* str)
 //{
@@ -362,7 +362,7 @@ int main()
 //		return 0;
 //}
 
-//Ö¸Õë-Ö¸Õë
+//æŒ‡é’ˆ-æŒ‡é’ˆ
 
 
 
@@ -388,10 +388,11 @@ int main()
 //
 //	printf("%d\n", strlen("abc"));
 //	printf("%d\n", strlen(arr1));
-//	printf("%d\n", strlen(arr2));//Ö±µ½ÕÒµ½'\0'²ÅÍ£Ö¹
+//	printf("%d\n", strlen(arr2));//ç›´åˆ°æ‰¾åˆ°'\0'æ‰åœæ­¢
 //
 //	return 0;
 //}
+
 
 
 
