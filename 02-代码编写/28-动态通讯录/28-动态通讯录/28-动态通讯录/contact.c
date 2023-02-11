@@ -4,6 +4,10 @@
 #include "contact.h"
 
 
+
+
+
+
 //初始化通讯录
 void InitContact(struct Contact* ps)
 {

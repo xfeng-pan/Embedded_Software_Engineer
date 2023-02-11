@@ -5,9 +5,7 @@ x64/
 
 # visuall studio
 *.bak
-*.vcxproj
-*.vcxproj.user
-*.vcxproj.filters
+
 
 
 # Prerequisites
