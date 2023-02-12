@@ -4,7 +4,102 @@
 #include <string.h>
 #include <errno.h>
 
+int main()
+{
+	//打开文件
+	FILE* pf = fopen("test.txt", "r");
+	if (!pf)
+	{
+		//perror：报错的时候会显示信息与自定义内容
+		perror("fopen:");//一种报错方式
+		return 0;
+	}
 
+	//读文件
+	int ch = 0;
+	while ((ch = fgetc(pf)) != EOF)
+	{
+		//五种文件输出格式，理论上输出六个字符
+		putc(ch,stdout);
+		putchar(putc(ch, stdout));//putc，putchar的返回值是输出的字符
+		fputc(ch, stdout);
+		printf("%c",ch);
+		fprintf(stdout, "%c\n", ch);
+	}
+	if (ferror(pf)) printf("error\n");
+	else if (feof(pf)) printf("end of file\n");
+
+	//关闭文件
+	fclose(pf);
+	pf = NULL;
+	return 0;
+
+}
+
+//int main()
+//{
+//	//EOF
+//	//feof();//end of file:文件结束标志
+//	//其值是-1
+//
+//	FILE* pf = fopen("test2.txt", "r");
+//	if (!pf)
+//	{
+//		perror("fopen:");//一种新的报错方式
+//		return 0;
+//	}
+//
+//	int ch = fgetc(pf);
+//
+//	printf("%d", ch);//如果输出-1，则代表文件结束了
+//
+//	fclose(pf);
+//	pf = NULL;
+//
+//	return 0;
+//}
+
+//int main()
+//{
+//	//打开文件
+//	FILE* pf = fopen("test.txt", "r");
+//	if (pf == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//		return 0;
+//	}
+//	printf("%ld\n", ftell(pf));
+//	//定位文件指针
+//	fseek(pf, 2, SEEK_CUR);//偏移到C
+//	//读取文件
+//	char ch = fgetc(pf);
+//	putc(ch,stdout);
+//
+//	//定位文件指针
+//	fseek(pf, 2, SEEK_CUR);//偏移到F
+//	//读取文件
+//	ch = fgetc(pf);//读完F之后，自动偏移到G
+//	putc(ch, stdout);
+//
+//	//定位文件指针
+//	fseek(pf, -2, SEEK_CUR);//偏移-2，偏移到E
+//	//读取文件
+//	ch = fgetc(pf);//读取完成之后自动偏移到F（F的偏移量是5）
+//	putc(ch, stdout);
+//
+//	printf("\n%ld\n", ftell(pf));
+//
+//	rewind(pf);//定位到文件开头
+//
+//	printf("%ld\n", ftell(pf));
+//	//读取文件
+//	ch = fgetc(pf);//读取完成之后自动偏移到F（F的偏移量是5）
+//	putc(ch, stdout);
+//
+//	//关闭文件
+//	fclose(pf);
+//	return 0;
+//}
 
 //typedef struct S
 //{

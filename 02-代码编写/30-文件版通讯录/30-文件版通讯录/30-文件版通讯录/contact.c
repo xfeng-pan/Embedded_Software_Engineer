@@ -4,7 +4,7 @@
 
 //初始化通讯录
 void InitContact(struct Contact* ps)
-{
+{ 
 	ps->data = NULL;
 	//ps->data=(struct PeoInfo*) malloc(3 * sizeof(struct PeoInfo));//这样开辟的空间里面是随机值
 	ps->data=(struct PeoInfo*) calloc(DEFAULT_SZ, sizeof(struct PeoInfo));//开辟空间的同时，清零
