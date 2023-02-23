@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "led.h"
+#include "beep.h"
 
 /* USER CODE END Includes */
 
@@ -91,6 +92,7 @@ int main(void)
   
 
   /* USER CODE END 2 */
+  BeepBlink();
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */

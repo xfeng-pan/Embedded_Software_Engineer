@@ -60,3 +60,10 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+
+*.axf
+*.htm
+*.crf
+*.Inp
+*.dep
