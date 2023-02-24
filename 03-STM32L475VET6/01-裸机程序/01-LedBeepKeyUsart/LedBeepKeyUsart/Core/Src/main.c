@@ -23,8 +23,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+
 #include "led.h"
 #include "beep.h"
+#include "key.h"
 
 /* USER CODE END Includes */
 
@@ -92,7 +94,9 @@ int main(void)
   
 
   /* USER CODE END 2 */
-  BeepBlink();
+
+//  BeepBlink();
+  LedBlink();
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
@@ -100,8 +104,11 @@ int main(void)
   {
     /* USER CODE END WHILE */
 	  
-	  LedBlink();
-	  HAL_Delay(100);
+	  int16_t key=Key_Scan(0);
+	  
+	  Key_Led(key);
+	  
+	  HAL_Delay(10);
 
 
 

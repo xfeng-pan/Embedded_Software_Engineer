@@ -6,6 +6,11 @@ x64/
 # visuall studio
 *.bak
 
+*.axf
+*.htm
+*.crf
+*.Inp
+*.dep
 
 
 # Prerequisites
@@ -62,8 +67,3 @@ Mkfile.old
 dkms.conf
 
 
-*.axf
-*.htm
-*.crf
-*.Inp
-*.dep
