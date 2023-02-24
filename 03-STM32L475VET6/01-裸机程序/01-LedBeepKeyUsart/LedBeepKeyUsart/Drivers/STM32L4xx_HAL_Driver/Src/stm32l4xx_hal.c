@@ -35,6 +35,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l4xx_hal.h"
 
+
 /** @addtogroup STM32L4xx_HAL_Driver
   * @{
   */
@@ -90,6 +91,9 @@
 __IO uint32_t uwTick;
 uint32_t uwTickPrio = (1UL << __NVIC_PRIO_BITS); /* Invalid priority */
 HAL_TickFreqTypeDef uwTickFreq = HAL_TICK_FREQ_DEFAULT;  /* 1KHz */
+
+extern UART_HandleTypeDef huart1;   //ÉùÃ÷´®¿Ú
+
 /**
   * @}
   */
@@ -762,3 +766,5 @@ void HAL_SYSCFG_DisableIOAnalogSwitchBooster(void)
 /**
   * @}
   */
+
+

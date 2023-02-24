@@ -13,7 +13,11 @@ int16_t Key_Scan(int16_t mode)
 	{
 		HAL_Delay(10);
 		keystatus=0;	
-		if(0==KEY0) return K0Press;
+		if(0==KEY0)
+		{
+//			printf("KEY0 PRESS!!!\r\n");
+			return K0Press;
+		}
 		else if(0==KEY1) return K1Press;
 		else if(0==KEY2) return K2Press;
 		else if(1==WK_UP) return WK_UP_Presss;
