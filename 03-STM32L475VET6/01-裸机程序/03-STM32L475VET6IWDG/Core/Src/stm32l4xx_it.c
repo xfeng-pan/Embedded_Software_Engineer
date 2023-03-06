@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "delay.h"
+#include "iwdg.h"
 
 /* USER CODE END Includes */
 
@@ -201,21 +202,6 @@ void SysTick_Handler(void)
 /******************************************************************************/
 
 /**
-  * @brief This function handles EXTI line[9:5] interrupts.
-  */
-void EXTI9_5_IRQHandler(void)
-{
-  /* USER CODE BEGIN EXTI9_5_IRQn 0 */
-
-  /* USER CODE END EXTI9_5_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_8);
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_9);
-  /* USER CODE BEGIN EXTI9_5_IRQn 1 */
-
-  /* USER CODE END EXTI9_5_IRQn 1 */
-}
-
-/**
   * @brief This function handles EXTI line[15:10] interrupts.
   */
 void EXTI15_10_IRQHandler(void)
@@ -223,7 +209,7 @@ void EXTI15_10_IRQHandler(void)
   /* USER CODE BEGIN EXTI15_10_IRQn 0 */
 
   /* USER CODE END EXTI15_10_IRQn 0 */
-  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_10);
+  HAL_GPIO_EXTI_IRQHandler(GPIO_PIN_13);
   /* USER CODE BEGIN EXTI15_10_IRQn 1 */
 
   /* USER CODE END EXTI15_10_IRQn 1 */
@@ -232,30 +218,10 @@ void EXTI15_10_IRQHandler(void)
 /* USER CODE BEGIN 1 */
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
-
-	
-	delay_ms(50);//—” ±∑¿∂∂
-	if(GPIO_Pin==GPIO_PIN_8)
+	delay_ms(20);
+	if(HAL_GPIO_ReadPin(GPIOC,GPIO_Pin)==GPIO_PIN_SET)
 	{
-		if(HAL_GPIO_ReadPin(GPIOD,GPIO_PIN_8)==GPIO_PIN_RESET)
-		{
-			HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_7);
-		}
-	}
-	else if(GPIO_Pin==GPIO_PIN_9)
-	{
-		if(HAL_GPIO_ReadPin(GPIOD,GPIO_PIN_9)==GPIO_PIN_RESET)
-		{
-			HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_8);
-		}
-	}
-	else if(GPIO_Pin==GPIO_PIN_10)
-	{
-
-		if(HAL_GPIO_ReadPin(GPIOD,GPIO_PIN_10)==GPIO_PIN_RESET)
-		{
-			HAL_GPIO_TogglePin(GPIOE,GPIO_PIN_9);
-		}
+		HAL_IWDG_Refresh(&hiwdg);
 	}
 	
 }
