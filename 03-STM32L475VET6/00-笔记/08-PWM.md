@@ -244,8 +244,101 @@ htim3.Instance->CCR1 = 300;
 
 # 例程详解-MOTOR
 
+潘多拉开发板中通过TC214B电机驱动芯片驱动板载直流电机，因此需要先了解TC214B芯片的主要功能及其使用方法。
+
+## TC214B芯片
+
+![Img](./FILES/08-PWM.md/img-20230308220128.png)
+
+![Img](./FILES/08-PWM.md/img-20230308220141.png)
+
+![Img](./FILES/08-PWM.md/img-20230308220152.png)
+
+通过以上资料可以了解到，MCU控制TC214B从而进行直流电机转动方向，方向控制（即前进/后退）主要是通过控制MCU输出两路PWM在同一时刻的高低电平决定，速度控制主要是通过PWM输出脉冲的占空比决定。
+
+## 原理图
+
+![Img](./FILES/08-PWM.md/img-20230308220215.png)
+
+STM32控制电机的引脚为MOTOR_A（PA0）、MOTOR_B（PA1），通过TIM2_CH1和TIM2_CH2产生两路PWM信号控制TC214B，从而实现直流电机的转动控制。
+
+![Img](./FILES/08-PWM.md/img-20230308220227.png)
+
+根据TC214B芯片手册的“八、输入/输出波形”可知，当INA为高，INB为低时电机前进，当INA为低，INB为高时电机后退。因此电机控制逻辑可以按照如下实现：
+
+电机前进：设置INA输入PWM脉冲，INB一直保持低电平（当INA输入脉冲处于高电平时，电机前进。当INA输入脉冲处于低电平时，电机处于待命状态）
+
+电机后退：设置INA一直保持低电平，INB输入PWM脉冲（当INB输入脉冲处于高电平时，电机后退。当INB输入脉冲处于低电平时，电机处于待命状态）
 
 
+## 实际代码
+
+1. 开启双通道PWM波
+
+```C
+  /* USER CODE BEGIN 2 */
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+  HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_2);
+
+  /* USER CODE END 2 */
+```
+
+2. 定义变量
+
+```C
+/* USER CODE BEGIN PV */
+int16_t pwmvalue=200;	//pwm波的占空比，最低200 最高1000
+int16_t dir=1;		//1. 正转 0. 反转
+int16_t speed=1; 	//1. 加速 0. 减速
+int16_t time=0;
+
+/* USER CODE END PV */
+```
+
+3. 业务代码
+```C
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
+  while (1)
+  {
+	  if(speed) pwmvalue += 5;
+	  else pwmvalue -= 5;
+	  
+	  if(pwmvalue>=1000) speed=0;
+	  if(pwmvalue<=100) 
+	  {
+		  speed=1;
+		  
+		  dir=dir^0x01;		  
+	  }
+	  
+	  if(dir)
+	  {
+		  htim2.Instance->CCR1=pwmvalue;
+		  htim2.Instance->CCR2=0;
+	  }
+	  else
+	  {
+		  htim2.Instance->CCR1=0;
+		  htim2.Instance->CCR2=pwmvalue;
+	  }
+	  
+	  time++;
+	  
+	  if(time>20)
+	  {
+		  time=0;
+		  HAL_GPIO_TogglePin(GPIOE, GPIO_PIN_8);
+	  }
+	  
+	  HAL_Delay(50);
+	  
+    /* USER CODE END WHILE */
+
+    /* USER CODE BEGIN 3 */
+  }
+  /* USER CODE END 3 */
+```
 
 
 
