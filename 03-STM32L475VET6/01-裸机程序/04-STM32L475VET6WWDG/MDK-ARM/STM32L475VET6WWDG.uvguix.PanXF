@@ -1874,9 +1874,9 @@
       </Doc>
       <Doc>
         <Name>../Core/Src/stm32l4xx_it.c</Name>
-        <ColumnNumber>28</ColumnNumber>
+        <ColumnNumber>41</ColumnNumber>
         <TopLine>215</TopLine>
-        <CurrentLine>233</CurrentLine>
+        <CurrentLine>232</CurrentLine>
         <Folding>1</Folding>
         <ContractedFolders></ContractedFolders>
         <PaneID>0</PaneID>
