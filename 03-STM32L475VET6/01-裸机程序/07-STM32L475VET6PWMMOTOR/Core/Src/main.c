@@ -113,13 +113,19 @@ int main(void)
 	  
 	  if(dir)
 	  {
-		  htim2.Instance->CCR1=pwmvalue;
+		  htim2.Instance->CCR1=pwmvalue; //寄存器写法
 		  htim2.Instance->CCR2=0;
+		  
+//		  __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,pwmvalue); //宏定义写法
+//		  __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_2,0);
 	  }
 	  else
 	  {
-		  htim2.Instance->CCR1=0;
+		  htim2.Instance->CCR1=0;//寄存器写法
 		  htim2.Instance->CCR2=pwmvalue;
+		  
+//		  __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_1,0);//宏定义写法
+//		  __HAL_TIM_SetCompare(&htim2,TIM_CHANNEL_2,pwmvalue);
 	  }
 	  
 	  time++;
