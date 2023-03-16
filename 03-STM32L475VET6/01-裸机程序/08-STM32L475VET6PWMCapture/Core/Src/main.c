@@ -24,6 +24,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <stdio.h>
+#include "delay.h"
+
 
 /* USER CODE END Includes */
 
@@ -44,13 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-//uint8_t CapSTA=0;//8Œª◊¥Ã¨£∫[7]£∫≤∂ªÒÕÍ≥…£¨[6]:≤∂ªÒµΩ∏ﬂµÁ∆Ω, [5-0]:“Á≥ˆº∆ ˝
-//uint32_t CapCNT=0;//º∆ ˝∆˜¥Ê¥¢¡ø
-
-
-
-uint16_t htime=0;
-
 
 /* USER CODE END PV */
 
@@ -62,10 +58,26 @@ void SystemClock_Config(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-	uint32_t capture_Buf[3] = {0};   //¥Ê∑≈º∆ ˝÷µ
-    uint8_t capture_Cnt = 0;    //◊¥Ã¨±Í÷æŒª
-    uint32_t high_time;   //∏ﬂµÁ∆Ω ±º‰
-//	uint8_t time=0;
+
+uint32_t IC_Val1 = 0;
+uint32_t IC_Val2 = 0;
+uint32_t Dif = 0;
+
+uint8_t count = 0;
+
+float ftim1 = 1000;//pwmÊ≥¢ÁöÑÈ¢ëÁéáÔº?1000kHz
+
+float freq = 0.0;
+
+int IsFirstCap = 0;
+
+int fputc(int ch, FILE *f)
+{
+	uint8_t temp[1] = {ch};
+	HAL_UART_Transmit(&huart1, temp, 1, 1);
+	
+}
+
 
 /* USER CODE END 0 */
 
@@ -76,7 +88,6 @@ void SystemClock_Config(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
 
   /* USER CODE END 1 */
 
@@ -98,11 +109,22 @@ int main(void)
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_TIM2_Init();
-  MX_TIM4_Init();
   MX_USART1_UART_Init();
+  MX_TIM1_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-  HAL_UART_Transmit(&huart1,"Running\r\n",sizeof("Running\r\n"),10);
+  delay_init(80);
+  
+  TIM1 -> CCR1 = 50;//ÂØÑÂ≠òÂô®ÂÜôÊ≥??
+//  __HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,50);//ÂÆèÂÆö‰πâÂÜôÊ≥?
+
+  HAL_UART_Transmit(&huart1,"system working !!!\r\n", sizeof("system working !!!\r\n"), 10);
+
+  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);//Âº?ÂêØTIM1ÁöÑÈ?öÈÅì1ÁöÑPWMÊ≥¢ËæìÂá??
+  
+  HAL_TIM_IC_Start_IT(&htim2, TIM_CHANNEL_3);//Âº?ÂêØTIM2ÁöÑÈ?öÈÅì3ÁöÑËæìÂÖ•ÊçïËé∑‰∏≠Êñ??
+  
+  
 
   /* USER CODE END 2 */
 
@@ -110,27 +132,19 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	 switch (capture_Cnt){
-	case 0:
-		capture_Cnt++;
-		__HAL_TIM_SET_CAPTUREPOLARITY(&htim4, TIM_CHANNEL_4, TIM_INPUTCHANNELPOLARITY_RISING);
-		HAL_TIM_IC_Start_IT(&htim4, TIM_CHANNEL_4);	//∆Ù∂Ø ‰»Î≤∂ªÒ       ªÚ’ﬂ: __HAL_TIM_ENABLE(&htim4);
-		break;
-	case 3:
-		high_time = capture_Buf[1]- capture_Buf[0];    //∏ﬂµÁ∆Ω ±º‰
-		HAL_UART_Transmit(&huart1,"cap!!!\r\n",sizeof("cap!!!\r\n"),0xff);
-		HAL_UART_Transmit(&huart1, (uint8_t *)&high_time, 4, 0xffff);   //∑¢ÀÕ∏ﬂµÁ∆Ω ±º‰
-				
-				
-		HAL_Delay(100);   //—” ±1S
-		capture_Cnt = 0;  //«Âø’±Í÷æŒª
-		break;
-				
-	}
-	 
+	  
+	  delay_ms(10);
+	  
+	  
+	  
+	  
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+
+	  
+				
+
   }
   /* USER CODE END 3 */
 }
@@ -183,32 +197,53 @@ void SystemClock_Config(void)
   }
 }
 
-
 /* USER CODE BEGIN 4 */
+
 void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
 {
+	//printf("Interrupt\r\n");
 	
-	if(TIM4 == htim->Instance)
+	if(htim->Channel == HAL_TIM_ACTIVE_CHANNEL_3)//Âà§Êñ≠ÂΩìÂâçÁöÑÊøÄÊ¥ªÈ?öÈÅì
 	{
-		switch(capture_Cnt){
-			case 1:
-				capture_Buf[0] = HAL_TIM_ReadCapturedValue(&htim4,TIM_CHANNEL_4);//ªÒ»°µ±«∞µƒ≤∂ªÒ÷µ.
-				__HAL_TIM_SET_CAPTUREPOLARITY(&htim4,TIM_CHANNEL_4,TIM_ICPOLARITY_FALLING);  //…Ë÷√Œ™œ¬Ωµ—ÿ≤∂ªÒ
-				capture_Cnt++;
-			break;
-			case 2:
-				capture_Buf[1] = HAL_TIM_ReadCapturedValue(&htim4,TIM_CHANNEL_4);//ªÒ»°µ±«∞µƒ≤∂ªÒ÷µ.
-				HAL_TIM_IC_Stop_IT(&htim4,TIM_CHANNEL_4); //Õ£÷π≤∂ªÒ   ªÚ’ﬂ: __HAL_TIM_DISABLE(&htim5);
-				capture_Cnt++; 
-			break;
+		if(IsFirstCap == 0)
+		{
 			
+			IC_Val1 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_3);//Ëé∑ÂæóÁ¨¨‰∏ÄÊ¨°ÊçïËé∑ÁöÑËÆ°Êï∞ÂÄ??
+			IsFirstCap = 1;//ÂáÜÂ§áÁ¨¨‰∫åÊ¨°ÊçïËé∑
+			//printf("First capture:%d \r\n",IC_Val1);
 		}
-	
+		else
+		{
+			IC_Val2 = HAL_TIM_ReadCapturedValue(htim, TIM_CHANNEL_3);//Ëé∑ÂæóÁ¨¨‰∫åÊ¨°ÊçïËé∑ÁöÑËÆ°Êï∞ÂÄ??
+			//printf("Second capture:%d \r\n",IC_Val2);
+			if(IC_Val2 > IC_Val1)//Âà§Êñ≠Ê≠§Ê¨°ÊòØÂê¶Ê∫¢Âá∫
+			{
+				Dif = IC_Val2 - IC_Val1;				
+			}
+			else if(IC_Val1 > IC_Val2)
+			{
+				Dif = 0XFFFFFFFF - IC_Val1 + IC_Val2;
+			}
+			
+			//printf("Frequency caculate\r\n");
+			freq = ftim1 / Dif;
+			
+			__HAL_TIM_SetCounter(htim, 0);//ËÆ°Êï∞Âô®ÂΩíÈõ∂
+			
+			printf("The frequency is %.4f kHz\r\n",freq);
+			
+			delay_ms(1000);
+			
+			freq = 0.0;
+			
+			printf("Restart capture\r\n");
+			
+			IsFirstCap = 0;//ÈáçÊñ∞ÂºÄÂßãÊçïËé∑??
+		}
 	}
-	
 }
-/* USER CODE END 4 */
 
+/* USER CODE END 4 */
 
 /**
   * @brief  This function is executed in case of error occurrence.

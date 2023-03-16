@@ -26,7 +26,9 @@
 "stm32l475vet6pwmcapture\stm32l4xx_hal_uart.o"
 "stm32l475vet6pwmcapture\stm32l4xx_hal_uart_ex.o"
 "stm32l475vet6pwmcapture\system_stm32l4xx.o"
---strict --scatter "STM32L475VET6PWMCapture\STM32L475VET6PWMCapture.sct"
+"stm32l475vet6pwmcapture\delay.o"
+"stm32l475vet6pwmcapture\sys.o"
+--library_type=microlib --strict --scatter "STM32L475VET6PWMCapture\STM32L475VET6PWMCapture.sct"
 --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers
 --list "STM32L475VET6PWMCapture.map" -o STM32L475VET6PWMCapture\STM32L475VET6PWMCapture.axf
