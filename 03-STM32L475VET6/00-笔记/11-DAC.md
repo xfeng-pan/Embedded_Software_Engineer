@@ -170,6 +170,33 @@ uint32_t HAL_DAC_GetValue(DAC_HandleTypeDef* hdac, uint32_t Channel);  //获取D
 
 
 
+# DAC输出波形
+
+## 三角波生成
+简单的说，首先设置一个DAC最大幅值， 之后设置定时器溢出时间，在每次定时器发生溢出等事件之后，定时器会发送触发信号TRGO到DAC，这是内部的三角波计数器就会累加1 然后于DAC_DHRx寄存器的值相加，写到DAC_DORx计数器中，如果该值小于设定的最大幅值，就会正常输出，当大于最大幅值时就会递减，减到0之后又开始累加，周而复始，就形成了三角波
+
+![Img](/00-嵌入式软件工程师/03-STM32L475VET6/00-笔记/FILES/11-DAC.md/img-20230317170843.png)
+
+![Img](/00-嵌入式软件工程师/03-STM32L475VET6/00-笔记/FILES/11-DAC.md/img-20230317170851.png)
+
+## 三角波频率
+
+设三角波幅值为3.3V，即4095，所以一个周期计数器计数4096*2=8192次，则三角波频率为“定时器频率/8192”
+
+## 代码实现
+
+```C
+    /* USER CODE BEGIN 2 */
+     HAL_TIM_Base_Start(&htim2);
+     HAL_DAC_Start(&hdac, DAC_CHANNEL_2);
+     /* USER CODE END 2 */
+```
+
+
+
+
+
+## DAC输出三角波
 
 
 
