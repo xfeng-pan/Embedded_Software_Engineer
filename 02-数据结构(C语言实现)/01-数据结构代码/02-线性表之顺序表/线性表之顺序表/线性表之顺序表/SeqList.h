@@ -34,12 +34,22 @@ typedef struct SeqList
 
 //增删查改等接口函数
 void SeqListInit(SL* ps);//初始化
+void SeqListDestory(SL* ps);//销毁数据
+
+
 void SeqListPrint(SL* ps);//打印
 void SeqListPushBack(SL* ps, SQDataType x);//尾部插入
 void SeqListPushFront(SL* ps, SQDataType x);//头部插入
 void SeqListPopBack(SL* ps);//尾部删除
-void seqListPopFront(SL* ps);//头部删除
+void SeqListPopFront(SL* ps);//头部删除
 
+//指定插入和删除
+void SeqListInsert(SL* ps, int position, SQDataType x);
+void SeqListErase(SL* ps, int position);
+
+//查找和更改
+int SeqListFind(SL* ps, SQDataType x);
+void SeqListModify(SL* ps, int position, SQDataType x);
 
 
 
