@@ -13,6 +13,7 @@ void QueueInit(Queue* pq)
 void QueueDestory(Queue* pq)
 {
 	assert(pq);
+
 	QNode* cur = pq->head;
 	while (cur)
 	{
