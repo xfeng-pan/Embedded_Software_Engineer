@@ -106,8 +106,23 @@ void LeveOrder(BTNode* root)
 			QueuePush(&q, front->right);
 		}
 	}
+	printf("\r\n");
 	QueueDestory(&q);
 }
+
+
+void TreeDestory(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	TreeDestory(root->left);
+	TreeDestory(root->right);
+	printf("Destory: %c \r\n", root->data);
+	free(root);
+}
+
 
 int main()
 {
@@ -168,6 +183,8 @@ int main()
 	printf("TreeleafSize: %d \r\n", Treeleafsize(C));
 
 	LeveOrder(A);
+
+	TreeDestory(A);
 
 	return 0;
 }
