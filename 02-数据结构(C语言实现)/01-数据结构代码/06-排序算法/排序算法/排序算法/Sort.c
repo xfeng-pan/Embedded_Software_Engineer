@@ -4,6 +4,10 @@
 #include <time.h>
 #include <stdlib.h>
 
+#include "Stack.h"
+
+
+
 
 //打印数组
 void PrintArray(int* a, int n)
@@ -391,9 +395,9 @@ void QuickSort(int* a, int left, int right)
 		return;
 	}
 
-	//int KeyIndex = PartSort1(a, left, right);//挖坑法
+	int KeyIndex = PartSort1(a, left, right);//挖坑法
 	//int KeyIndex = PartSort2(a, left, right);//左右指针法
-	int KeyIndex = PartSort3(a, left, right);//左右指针法
+	//int KeyIndex = PartSort3(a, left, right);//左右指针法
 
 	//到这里，原来数组的区间[left, right]已经被分为了三个部分
 	// [left, pivot - 1], pivot, [pivot + 1, right]
@@ -496,9 +500,111 @@ void MergeSortTest()
 
 
 
+//非递归的快速排序
+//利用数据结构的栈来模拟递归
+void QuickSortNonR(int* a, int n)
+{
+	ST st;
+	StackInit(&st);
+	StackPush(&st, n - 1);
+	StackPush(&st, 0);
+
+	while (!IsStackEmpty(&st))
+	{
+		int left = StackTop(&st);
+		StackPop(&st);
+
+		int right = StackTop(&st);
+		StackPop(&st);
+
+		int KeyIndex = PartSort3(a, left, right);
+		// [left, KeyIndex - 1], KeyIndex, [KeyIndex + 1, right]
+		if (KeyIndex + 1 < right)
+		{
+			StackPush(&st, right);
+			StackPush(&st, KeyIndex);
+		}
+
+		if (left < KeyIndex - 1)
+		{
+			StackPush(&st, KeyIndex);
+			StackPush(&st, left);
+		}
+	}
+	StackDestory(&st);
+}
 
 
+void QuickSortNonRTest()
+{
+	int a[] = { 6,9,2,5,7,1,8,3,4,0 };
+	QuickSortNonR(a, sizeof(a) / sizeof(int));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
 
+
+void MergeSortNorR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+
+	int gap = 1;//每组数据个数
+
+	while (gap < n)
+	{
+		for (int i = 0; i < n; i += 2 * gap)
+		{
+			//[i, i + gap - 1] [i + gap, i + 2 * gap - 1]
+			int begin1 = i, end1 = i + gap - 1;
+			int begin2 = i + gap, end2 = i + 2 * gap - 1;
+			//归并过程中右半区间可能不存在
+			if (begin2 >= n)
+			{
+				break;
+			}
+			//归并过程中右半区间算多了
+			if (end2 >= n)
+			{
+				end2 = n - 1;
+			}
+
+			int index = i;
+
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] < a[begin2])
+				{
+					tmp[index++] = a[begin1++];
+				}
+				else
+				{
+					tmp[index++] = a[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[index++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[index++] = a[begin2++];
+			}
+			
+		}
+		//再将数据拷贝回int* a;
+		for (int j = 0; j < n; j++)
+		{
+			a[j] = tmp[j];
+		}
+		gap *= 2;
+	}
+}
+
+void MergeSortNorRTest()
+{
+	int a[] = { 6,9,2,5,7,1,8,3,4,0 };
+	MergeSortNorR(a, sizeof(a) / sizeof(int));
+	PrintArray(a, sizeof(a) / sizeof(int));
+}
 
 
 
@@ -602,7 +708,11 @@ int main()
 
 	//QuickSortTest();
 
-	MergeSortTest();
+	//MergeSortTest();
+
+	//QuickSortNonRTest();
+
+	MergeSortNorRTest();
 
 	//TestOP();
 	return 0;

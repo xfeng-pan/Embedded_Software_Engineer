@@ -46,7 +46,6 @@ int** generateMatrix(int n) {
     //ÖĞ¼äÌî³ä
     if (n % 2 == 1) arr[n / 2 + 1][n / 2 + 1] = count;
     return arr;
-
 }
 
 
