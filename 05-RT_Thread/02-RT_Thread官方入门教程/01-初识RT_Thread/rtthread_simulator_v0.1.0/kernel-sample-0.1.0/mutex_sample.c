@@ -32,11 +32,11 @@ static void rt_thread_entry1(void *parameter)
       while(1)
       {
           /* 线程1获取到互斥量后，先后对number1、number2进行加1操作，然后释放互斥量 */
-          rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);          
+          //rt_mutex_take(dynamic_mutex, RT_WAITING_FOREVER);          
           number1++;
           rt_thread_mdelay(10);
           number2++;          
-          rt_mutex_release(dynamic_mutex);
+          //rt_mutex_release(dynamic_mutex);
        }	    
 }
 
