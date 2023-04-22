@@ -264,7 +264,7 @@ static void rt_thread_idle_entry(void *parameter)
  *
  * @note this function must be invoked when system init.
  */
-void rt_thread_idle_init(void)
+void rt_thread_idle_init(void) i
 {
     /* initialize thread */
     rt_thread_init(&idle,
