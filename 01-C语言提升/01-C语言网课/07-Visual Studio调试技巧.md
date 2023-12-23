@@ -1,3 +1,41 @@
+---
+
+# 注释：文件开头使用YAML语法配置文章信息，之后是正常的Markdown语法
+# Note: The beginning of the file uses YAML syntax to configure the blog meta data, followed by the normal Markdown syntax.
+
+# 此处如果不配置标题，则提取Markdown中的一级标题，或使用文件名
+# Title will be extracted from heading 1 of markdown or using file name if not configured here.
+title:  07-Visual Studio调试技巧
+
+
+# 此处如果不配置摘要，则从正文提取开头若干文字
+# Abstract will be extracted from the begining of markdown content if not configured here.
+abstract: 本节简要讲解了如何使用Visual Studio对编写的代码进行调试的技巧，介绍了什么是bug，什么是调试，调试的重要性，以及debug和release版本的区别，对windows调试环境进行了介绍，以及介绍了如何写出易于调试的代码。
+
+
+# URL用于固定链接、编辑文章功能，建议所有文章都配置
+# URL is used for permalink and article editing, and it is recommended to be configured.
+url: C-07
+
+
+# 文章发布时间，使用的时区和系统设置一致，不设置则使用当前时间
+# Article post time, time zone is the same as the system settings. Current time will be used if not configured here.
+date: 2023-07-04 20:00:07
+
+
+# 文章分类
+category:
+- C
+
+
+# 文章标签
+tags:
+- C
+- 调试
+
+---
+
+
 # 07-Visual Studio调试技巧
 
 ![Img](./FILES/07-Visual%20Studio调试技巧.md/img-20221229235254.png)
